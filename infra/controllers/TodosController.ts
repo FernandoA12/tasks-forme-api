@@ -1,4 +1,5 @@
 import { AddTodo } from "application/usecases/AddTodo";
+import { TodoPresentation } from "infra/presentation/TodoPresentation";
 import { TodosRepositoryMemory } from "infra/repositories/TodosRepositoryMemory";
 import { CryptoIdentifier } from "infra/security/CryptoIdentifier";
 
@@ -15,6 +16,8 @@ export class TodosController {
   }
 
   static async list() {
-    return await todosRepository.list();
+    const result = await todosRepository.list();
+
+    return TodoPresentation.getList(result);
   }
 }
