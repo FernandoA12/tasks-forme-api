@@ -4,4 +4,5 @@ export interface AddTodoRepository extends Pick<TodosRepository, "save"> {}
 
 export interface TodosRepository {
   save(todo: Todo): Promise<void>;
+  list(): Promise<Todo[]>;
 }

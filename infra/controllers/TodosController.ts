@@ -13,4 +13,8 @@ export class TodosController {
       score: body.score,
     });
   }
+
+  static async list() {
+    return await todosRepository.list();
+  }
 }

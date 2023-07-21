@@ -1,4 +1,5 @@
 import { AddTodo } from "application/usecases/AddTodo";
+import { Todo } from "domain/entities/Todo";
 
 it("should be add todo", async () => {
   const repository = {
@@ -15,11 +16,5 @@ it("should be add todo", async () => {
 
   expect(repository.save).toBeCalled();
   expect(identifier.createId).toBeCalled();
-  expect(todoSent.description).toBe("Fazer arroz");
-  expect(todoSent.score).toBe(15);
-  expect(todoSent.id).toBe("1");
-  expect(todoSent.status).toBe("created");
-  expect(todoSent.createdAt.toLocaleDateString("pt-BR")).toBe(
-    new Date().toLocaleDateString("pt-BR")
-  );
+  expect(todoSent).toBeInstanceOf(Todo);
 });

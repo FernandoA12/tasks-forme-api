@@ -1,3 +1,4 @@
+import { Todo } from "domain/entities/Todo";
 import { AddTodoRepository } from "domain/repositories/TodosRepository";
 import { Identifier } from "domain/security/Identifier";
 
@@ -7,12 +8,12 @@ export class AddTodo {
     private readonly identifier: Identifier
   ) {}
   async execute(input: Input) {
-    await this.todosRepository.save({
+    const todo = new Todo({
       ...input,
       id: this.identifier.createId(),
-      status: "created",
-      createdAt: new Date(),
     });
+
+    await this.todosRepository.save(todo);
   }
 }
 
