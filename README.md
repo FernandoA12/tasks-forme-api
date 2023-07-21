@@ -2,16 +2,16 @@
 
 ### Requisitos funcionais
 
-- [] Adicionar um todo juntamente com uma pontuação
-- [] Listar os todos a fazer
+- [x] Adicionar um todo juntamente com uma pontuação
+- [x] Listar os todos a fazer
 - [] Apresentar resultados (Qtd de todos feitos, Pontuação)
-- [] Remover Todos
-- [] Concluir todos
+- [] Remover Todo
+- [] Concluir todo
 - [] Ter a possibilidade de debitar pontos
 
 ### Requisitos não funcionais
 
 - [] MongoDB
-- [] REST API
-- [] Clean e Design Pattern
+- [x] REST API
+- [x] Clean e Design Pattern
 - [] Nextjs 13
