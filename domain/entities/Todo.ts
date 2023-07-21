@@ -1,7 +1,7 @@
 import { FieldInvalid } from "domain/errors/FieldInvalid";
 
 export namespace Todo {
-  export type Status = "created";
+  export type Status = "created" | "deleted";
   export interface Props {
     readonly id: string;
     description: string;
@@ -30,5 +30,9 @@ export class Todo {
     if (this.score < 0) {
       throw new FieldInvalid("score");
     }
+  }
+
+  remove() {
+    this.status = "deleted";
   }
 }

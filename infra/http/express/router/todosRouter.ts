@@ -6,5 +6,6 @@ const router = Router();
 
 router.post("/", ExpressAdapter.create(TodosController.create, 201));
 router.get("/", ExpressAdapter.create(TodosController.list));
+router.delete("/:id", ExpressAdapter.create(TodosController.delete));
 
 export default router;

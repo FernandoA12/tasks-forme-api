@@ -7,6 +7,12 @@ export class TodosRepositoryBridge implements TodosRepository {
     this.repository =
       process.env.NODE_ENV !== "production" ? repositoryDev : repositoryProd;
   }
+  async findOne(id: string): Promise<Todo> {
+    return await this.repository.findOne(id);
+  }
+  async update(todo: Todo): Promise<void> {
+    return await this.repository.update(todo);
+  }
   async save(todo: Todo): Promise<void> {
     return await this.repository.save(todo);
   }

@@ -48,3 +48,13 @@ it("should throw an exception when the score is invalid", () => {
       })
   ).toThrowError(new FieldInvalid("score"));
 });
+
+it("should register remove todo", () => {
+  const sut = new Todo({
+    id: "1",
+    description: "any",
+  });
+  expect(sut.status).toBe("created");
+  sut.remove();
+  expect(sut.status).toBe("deleted");
+});
