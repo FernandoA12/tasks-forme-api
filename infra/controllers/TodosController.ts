@@ -1,13 +1,18 @@
 import { AddTodo } from "application/usecases/AddTodo";
 import { TodoPresentation } from "infra/presentation/TodoPresentation";
-import { TodosRepositoryMemory } from "infra/repositories/TodosRepositoryMemory";
+import { TodosRepositoryBridge } from "infra/repositories/bridge/TodosRepositoryBrigde";
+import { TodosRepositoryDatabase } from "infra/repositories/database/TodosRepositoryDatabase";
+import { TodosRepositoryMemory } from "infra/repositories/memory/TodosRepositoryMemory";
 import { CryptoIdentifier } from "infra/security/CryptoIdentifier";
 
-const todosRepository = new TodosRepositoryMemory();
+const todosRepositoryBridge = new TodosRepositoryBridge(
+  new TodosRepositoryMemory(),
+  new TodosRepositoryDatabase()
+);
 export class TodosController {
   static async create(_, body) {
     const identifier = new CryptoIdentifier();
-    const addTodo = new AddTodo(todosRepository, identifier);
+    const addTodo = new AddTodo(todosRepositoryBridge, identifier);
 
     await addTodo.execute({
       description: body.description,
@@ -16,7 +21,7 @@ export class TodosController {
   }
 
   static async list() {
-    const result = await todosRepository.list();
+    const result = await todosRepositoryBridge.list();
 
     return TodoPresentation.getList(result);
   }
