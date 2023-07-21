@@ -4,7 +4,7 @@
 
 - [x] Adicionar um todo juntamente com uma pontuação
 - [x] Listar os todos a fazer
-- [] Remover Todo
+- [x] Remover Todo
 - [] Apresentar resultados (Qtd de todos feitos, Pontuação)
 - [] Concluir todo
 - [] Ter a possibilidade de debitar pontos
